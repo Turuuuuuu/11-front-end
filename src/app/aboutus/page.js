@@ -16,7 +16,6 @@ export default function AboutPage() {
         <p>Contact</p>
         <p>Main</p>
       </div>
-      <div></div>
       <div className="mx-auto max-w-4xl">
         
         <section className="  m-16 py-16 rounded-2xl bg-white p-10 text-center shadow-sm ">

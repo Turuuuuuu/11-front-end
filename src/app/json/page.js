@@ -74,7 +74,7 @@ export default function WeatherPage() {
               Delete
             </button>
             <div>
-              {item.item.map((item) => <div>
+              {item.item.map((item) => <div key={item.id}>
                 <p>{item.name}</p>
                 <img className="w-44 h-36" src={item.image}/>
               
