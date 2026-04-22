@@ -12,7 +12,7 @@ export default function WeatherPage() {
   const query = search.toLowerCase();
   return (
     item.first_name.toLowerCase().includes(query) ||
-    item.email.toLowerCase().includes(query)
+    item.email.toLowerCase().includes(query) 
   );
 });
 
@@ -60,6 +60,7 @@ export default function WeatherPage() {
                 <div className="bg-green-400 rounded-full w-20 mx-auto">Teacher</div>
               )}
             </h6>
+             <img className="py-4" src={item.image}/>
 
             <p className="mt-4 font-bold">First: {item.first_name}</p>
             <p className="mt-2 font-bold">Last: {item.Last_name}</p>  {/* fixed */}
@@ -68,10 +69,18 @@ export default function WeatherPage() {
             <p className="mt-2 font-bold">Country: {item.country}</p>
             <p className="mt-2 font-bold">Points: {item.point}</p>
             <p className="mt-2 font-bold">Created: {item.created_at}</p>
-
+            
             <button className="bg-red-500 p-2 text-xs rounded text-white mt-3">
               Delete
             </button>
+            <div>
+              {item.item.map((item) => <div>
+                <p>{item.name}</p>
+                <img className="w-44 h-36" src={item.image}/>
+              
+              </div>)}
+
+            </div>
           </div>
         ))}
       </div>
