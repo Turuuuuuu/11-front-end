@@ -1,56 +1,69 @@
 "use client";
 
-import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function ContactPage() {
-    const router = useRouter();
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form submitted:", formData);
+    setFormData({ name: "", email: "", message: "" });
+  };
+
   return (
-    <div className="bg-gray-700 h-full w-full">
-      <div className="bg-gray-700 h-20 w-full flex justify-between py-4 pl-40 items-center gap-20 pr-40">
-        <p>Home</p>
-        <p>Product</p>
-        <img
-        onClick={() => router.push("/")}
-          className="h-20 w-20 py-2 px-2 rounded-full cursor-pointer"
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaYQe7sk8paP8GwcE7D6iEMSmj82HEVN8lZg&s"
-        />
-        <p>Contact</p>
-        <p>Main</p>
-      </div>
-      <div>
-        <h1 className="text-white text-xl px-12 font-semibold mb-4 mt-10 pb-12 ">
-          Contact us Page
-        </h1>
-        <p className="text-white font-semi-bold px-12 text-6xl ">
-          Do you want to start a new porject ,{" "}
-        </p>
-        <p className="text-white font-semi-bold px-12 text-6xl ">
-          join the team or just say hi?{" "}
-        </p>
-        <p className="text-white font-semi-bold px-12 text-6xl pb-12 ">
-          We love to hear from you.
-        </p>
-        <hr className="px-8"></hr>
-      </div>
-      <div className="pt-12 py-8">
-        <p className=" text-white text-4xl px-12">Our office</p>
-        <div className="flex">
-          <img
-            className="px-12 py-12 w-1/2 h-full bg-cover object-cover h-40"
-            src="https://ppc.land/content/images/size/w2000/2023/12/Mumbai-Office.jpg"
-            alt="location"
-          />
-          <div className="px-8">
-            <p className="text-white px-12  py-12 text-4xl">New york</p>
-            <p className="text-white px-12 py-4 text-xl">
-              THE CHARLES NEW YORK 195, Montegues st
-            </p>
-            <p className="text-white px-12  py-4 text-xl">example@nhs.edu.mn</p>
-            <p className="text-white px-12  py-4 underline text-xl">
-              view in map
-            </p>
-          </div>
+    <div className="min-h-screen bg-gray-900 text-white w-full">
+      <div className="px-4 py-14 sm:px-6 md:px-10 lg:px-16 max-w-4xl mx-auto">
+        <div className="mb-10">
+          <h1 className="text-4xl sm:text-5xl font-bold mb-4">Contact Us</h1>
+          <p className="text-gray-400 text-lg max-w-2xl">
+            Have a question or want to work together? Send us a message and we’ll reply as soon as possible.
+          </p>
+        </div>
+
+        <div className="bg-white rounded-3xl shadow-xl p-8 sm:p-10 text-gray-900">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
+              <input
+                type="text"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                className="w-full rounded-2xl border border-gray-300 px-4 py-3 focus:border-gray-700 focus:outline-none"
+                placeholder="Your name"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+              <input
+                type="email"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                className="w-full rounded-2xl border border-gray-300 px-4 py-3 focus:border-gray-700 focus:outline-none"
+                placeholder="you@example.com"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
+              <textarea
+                value={formData.message}
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                rows="6"
+                className="w-full rounded-2xl border border-gray-300 px-4 py-3 focus:border-gray-700 focus:outline-none resize-none"
+                placeholder="Write your message here..."
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              className="w-full rounded-2xl bg-gray-800 hover:bg-gray-700 text-white font-semibold py-3 transition"
+            >
+              Send Message
+            </button>
+          </form>
         </div>
       </div>
     </div>
